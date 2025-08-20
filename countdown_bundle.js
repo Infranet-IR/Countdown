@@ -8,6 +8,7 @@ window.registerWidgetBundle('event-countdown', (api) => {
   });
 });
 
+
 /*
 window.registerWidgetBundle('event-countdown', async (api) => {
   api.registerWidget({
@@ -63,3 +64,4 @@ window.registerWidgetBundle('event-countdown', async (api) => {
   });
 });
 */
+
