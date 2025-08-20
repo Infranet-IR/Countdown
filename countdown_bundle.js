@@ -1,12 +1,17 @@
 window.defineBlock({
   blockDefinition: {
     name: "event-countdown",
-    attributes: {
-      eventDate: {
+    attributes: [
+      {
+        name: "eventDate",
         type: "string",
-        default: "2025-12-09"
+        default: "2025-12-09",
+        label: {
+          en: "Event Date",
+          de: "Eventdatum"
+        }
       }
-    },
+    ],
     label: {
       en: "Countdown",
       de: "Countdown"
