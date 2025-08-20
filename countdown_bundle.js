@@ -1,26 +1,23 @@
 window.defineBlock({
   blockDefinition: {
     name: "event-countdown",
+    attributes: {
+      eventDate: {
+        type: "string",
+        default: "2025-12-09",
+        label: {
+          en: "Event Date",
+          de: "Eventdatum"
+        }
+      }
+    },
     label: {
       en: "Countdown",
       de: "Countdown"
     },
-    iconUrl: "https://infranet-ir.github.io/Countdown/icon.svg",
-    configurationSchema: {
-      type: "object",
-      properties: {
-        eventDate: {
-          type: "string",
-          title: {
-            en: "Event Date",
-            de: "Eventdatum"
-          },
-          default: "2025-12-09"
-        }
-      }
-    }
+    iconUrl: "https://infranet-ir.github.io/Countdown/icon.svg"
   },
-  factory: ({ configuration }) => {
+  factory: ({ attributes }) => {
     const el = document.createElement("div");
     el.innerHTML = `
       <div style="text-align:center; font-family:sans-serif;">
@@ -55,7 +52,7 @@ window.defineBlock({
       el.querySelector(".seconds").innerText = seconds;
     }
 
-    const targetDate = configuration.eventDate || "2025-12-09";
+    const targetDate = attributes.eventDate || '2025-12-09';
     updateCountdown(targetDate);
     setInterval(() => updateCountdown(targetDate), 1000);
 
