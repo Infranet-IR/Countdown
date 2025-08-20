@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Countdown</title>
+  <style>
+    :root {
+      /* Fallback-Farben, falls keine Staffbase-Variablen vorhanden sind */
+      --brand-primary: #0073e6;
+      --brand-primary-dark: #005bb5;
+      --brand-secondary: #f5f5f5;
+      --brand-text: #333;
+    }
+
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 1rem;
+      background: var(--brand-secondary);
+      color: var(--brand-text);
+    }
+    h1 {
+      margin-bottom: 1rem;
+      color: var(--brand-primary-dark);
+    }
+    .countdown-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .countdown-box {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      padding: 1rem;
+      min-width: 80px;
+      border: 2px solid var(--brand-primary);
+      transition: transform 0.2s ease;
+    }
+    .countdown-box:hover {
+      transform: translateY(-3px);
+    }
+    .countdown-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--brand-primary);
+    }
+    .countdown-label {
+      font-size: 0.9rem;
+      color: var(--brand-text);
+    }
+  </style>
+</head>
+<body>
+  <h1>Countdown zum Event</h1>
+  <div class="countdown-container">
+    <div class="countdown-box">
+      <div id="days" class="countdown-number">0</div>
+      <div class="countdown-label">Tage</div>
+    </div>
+    <div class="countdown-box">
+      <div id="hours" class="countdown-number">0</div>
+      <div class="countdown-label">Std</div>
+    </div>
+    <div class="countdown-box">
+      <div id="minutes" class="countdown-number">0</div>
+      <div class="countdown-label">Min</div>
+    </div>
+    <div class="countdown-box">
+      <div id="seconds" class="countdown-number">0</div>
+      <div class="countdown-label">Sek</div>
+    </div>
+  </div>
+
+  <<script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "event-countdown",
+  "label": {
+    "en": "Event Countdown",
+    "de": "Event-Countdown"
+  },
+  "description": {
+    "en": "Displays a stylish countdown to a specific event date.",
+    "de": "Zeigt einen stilvollen Countdown bis zu einem bestimmten Event-Datum."
+  },
+  "previewImage": "preview.png",
+  "config": {
+    "eventDate": {
+      "type": "string",
+      "label": {
+        "en": "Event Date (YYYY-MM-DD)",
+        "de": "Eventdatum (JJJJ-MM-TT)"
+      },
+      "default": "2025-12-09"
+    }
+  }
+}
