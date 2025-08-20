@@ -1,3 +1,14 @@
+window.registerWidgetBundle('event-countdown', (api) => {
+  api.registerWidget({
+    id: 'event-countdown',
+    render: ({ targetEl }) => {
+      targetEl.innerHTML = '<p>Widget läuft!</p>';
+    },
+    config: {}
+  });
+});
+
+/*
 window.registerWidgetBundle('event-countdown', async (api) => {
   api.registerWidget({
     id: 'event-countdown',
@@ -51,4 +62,4 @@ window.registerWidgetBundle('event-countdown', async (api) => {
     }
   });
 });
-
+*/
