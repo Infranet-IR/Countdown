@@ -1,13 +1,22 @@
-window.registerWidgetBundle('event-countdown', (api) => {
-  api.registerWidget({
-    id: 'event-countdown',
-    render: ({ targetEl }) => {
-      targetEl.innerHTML = '<p>Widget läuft!</p>';
-    },
-    config: {}
+function waitForRegisterWidgetBundle(callback) {
+  if (window.registerWidgetBundle) {
+    callback();
+  } else {
+    setTimeout(() => waitForRegisterWidgetBundle(callback), 50);
+  }
+}
+
+waitForRegisterWidgetBundle(() => {
+  window.registerWidgetBundle('event-countdown', (api) => {
+    api.registerWidget({
+      id: 'event-countdown',
+      render: ({ targetEl }) => {
+        targetEl.innerHTML = '<p>Widget läuft!</p>';
+      },
+      config: {}
+    });
   });
 });
-
 
 /*
 window.registerWidgetBundle('event-countdown', async (api) => {
@@ -64,4 +73,5 @@ window.registerWidgetBundle('event-countdown', async (api) => {
   });
 });
 */
+
 
