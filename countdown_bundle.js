@@ -48,7 +48,7 @@ window.registerWidgetBundle('event-countdown', async (api) => {
         },
         default: '2025-12-09'
       }
-    },
-    previewImage: 'https://yourdomain.com/preview.png' // Optional
+    }
   });
 });
+
