@@ -1,9 +1,24 @@
 window.defineBlock({
   blockDefinition: {
     name: "event-countdown",
-    attributes: [
-      {
-        name: "eventDate",
+    attributes: [], // statt Objekt
+    label: {
+      en: "Countdown",
+      de: "Countdown"
+    },
+    iconUrl: "https://infranet-ir.github.io/Countdown/icon.svg"
+  },
+  factory: ({ attributes }) => {
+    // ...
+  }
+});
+
+
+window.defineBlock({
+  blockDefinition: {
+    name: "event-countdown",
+    attributes: {
+      eventDate: {
         type: "string",
         default: "2025-12-09",
         label: {
@@ -11,7 +26,7 @@ window.defineBlock({
           de: "Eventdatum"
         }
       }
-    ],
+    },
     label: {
       en: "Countdown",
       de: "Countdown"
