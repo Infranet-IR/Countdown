@@ -1,22 +1,60 @@
-function waitForRegisterWidgetBundle(callback) {
-  if (window.registerWidgetBundle) {
-    callback();
-  } else {
-    setTimeout(() => waitForRegisterWidgetBundle(callback), 50);
-  }
-}
+window.defineBlock({
+  name: "event-countdown",
+  factory: ({ config }) => {
+    const el = document.createElement("div");
+    el.innerHTML = `
+      <div style="text-align:center; font-family:sans-serif;">
+        <h2>Countdown zum Event</h2>
+        <div class="countdown-container" style="display:flex; justify-content:center; gap:1rem;">
+          <div><div id="days" style="font-size:2rem;">0</div><div>Tage</div></div>
+          <div><div id="hours" style="font-size:2rem;">0</div><div>Std</div></div>
+          <div><div id="minutes" style="font-size:2rem;">0</div><div>Min</div></div>
+          <div><div id="seconds" style="font-size:2rem;">0</div><div>Sek</div></div>
+        </div>
+      </div>
+    `;
 
-waitForRegisterWidgetBundle(() => {
-  window.registerWidgetBundle('event-countdown', (api) => {
-    api.registerWidget({
-      id: 'event-countdown',
-      render: ({ targetEl }) => {
-        targetEl.innerHTML = '<p>Widget läuft!</p>';
-      },
-      config: {}
-    });
-  });
+    function updateCountdown(targetDate) {
+      const now = new Date();
+      const eventDate = new Date(targetDate);
+      const diff = eventDate - now;
+
+      if (diff <= 0) {
+        el.innerHTML = "<p>Das Event hat bereits stattgefunden.</p>";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      el.querySelector("#days").innerText = days;
+      el.querySelector("#hours").innerText = hours;
+      el.querySelector("#minutes").innerText = minutes;
+      el.querySelector("#seconds").innerText = seconds;
+    }
+
+    const targetDate = config.eventDate || '2025-12-09';
+    updateCountdown(targetDate);
+    setInterval(() => updateCountdown(targetDate), 1000);
+
+    return el;
+  },
+  configurationSchema: {
+    type: "object",
+    properties: {
+      eventDate: {
+        type: "string",
+        title: "Eventdatum (JJJJ-MM-TT)",
+        default: "2025-12-09"
+      }
+    }
+  },
+  label: "Countdown",
+  iconUrl: "https://infranet-ir.github.io/Countdown/icon.svg"  
 });
+
 
 /*
 window.registerWidgetBundle('event-countdown', async (api) => {
@@ -73,5 +111,6 @@ window.registerWidgetBundle('event-countdown', async (api) => {
   });
 });
 */
+
 
 
